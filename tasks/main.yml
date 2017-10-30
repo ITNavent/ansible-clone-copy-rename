@@ -1,0 +1,27 @@
+---
+
+- 
+  name: Git Clone/Checkout
+  git:
+    repo: "{{git_repo}}"
+    dest: "{{git_dest}}"
+    version: "{{git_version}}"
+    force: yes
+
+-
+  name: Create dest directories
+  file: path="{{item.dest}}" state=directory
+  with_items: "{{files_ccr}}" # recorre el array
+
+- 
+  name: Copy files
+  synchronize: src="{{git_dest}}/{{item.relative_src}}" dest="{{item.dest}}" mode=pull
+  delegate_to: "{{inventory_hostname}}" # "delegate_to:" cambia el host de "dest" a "inventory_hostname" (variable global con el hostname remoto actual)
+  with_items: "{{files_ccr}}" # recorre el array
+
+-
+  name: Rename files
+  command: mv -f "{{item.dest}}/{{item.relative_src|basename}}" "{{item.dest}}/{{item.new_name}}" # el filtro |basename devuelve el nombre del archivo del path
+  with_items: "{{files_ccr}}" # recorre el array
+  when: item.new_name is defined
+

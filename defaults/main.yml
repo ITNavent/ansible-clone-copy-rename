@@ -1,0 +1,8 @@
+---
+
+# Default values 
+
+# clone Git repo and copy
+git_dest: "/tmp/git"
+git_version: "master"
+
