@@ -1,6 +1,9 @@
+---
+
 galaxy_info:
   author: amendoza
   description: A role to clone a Git repository, copy files to other directories, and rename files.
+  version: 1.0.0
 
   license: MIT
 
@@ -21,11 +24,14 @@ galaxy_info:
   # platforms is a list of platforms, and each platform has a name and a list of versions.
   #
   platforms:
-  - name: Ubuntu
-    versions:
-    - 16.04
-  #   - all
-  #   - 25
+    - name: Ubuntu
+      versions:
+        - 16.04
+    #   - all
+    #   - 25
+
+  categories:
+    - configure
 
   galaxy_tags: [role,ansible,clone,repo,git,copy,download,rename]
     # List tags for your role here, one per line. A tag is a keyword that describes
