@@ -3,6 +3,6 @@
 # Default values 
 
 # clone Git repo and copy
-git_dest: "/tmp/git"
+git_dest: "/tmp/{{git_repo|basename}}" # el filtro "|basename" devuelve el nombre del archivo en una URL
 git_version: "master"
 
