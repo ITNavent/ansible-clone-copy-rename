@@ -8,9 +8,9 @@ Role custom de Ansible para descargar archivos desde un repo, copiarlos a difere
 Requirements
 ------------
 
-Ubuntu
-Git
-Ansible 2.6
+- Ubuntu
+- Git
+- Ansible 2.6
 
 Role Variables
 --------------
