@@ -1,5 +1,13 @@
 ---
 
+- name: Clean clone dest directory
+  file:
+    state: absent
+    path: "{{git_dest}}"
+  when: 
+    - git_dest is defined
+    - ccr_clean_git_dest is defined and ccr_clean_git_dest == true
+
 - 
   name: Git Clone/Checkout
   git:
@@ -9,7 +17,7 @@
     force: yes
 
 -
-  name: Create dest directories
+  name: Create clone dest directories
   file: path="{{item.dest}}" state=directory
   with_items: "{{files_ccr}}" # recorre el array
 
